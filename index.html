@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing Page hiện đại, chuẩn Responsive xây dựng bằng Bootstrap 5 Containers, Grid System, Buttons và Images.">
+  <title>NovaTech Cloud | Nền Tảng Chuyển Đổi Số Hiện Đại</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons 1.11.3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --dark-text: #0f172a;
+      --muted-text: #64748b;
+      --bg-subtle: #f8fafc;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark-text);
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .brand-logo {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--primary);
+    }
+
+    /* Hero Section (Bootstrap 5 Custom Hero, thay thế Jumbotron đã loại bỏ) */
+    .hero-section {
+      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.06) 0%, transparent 50%),
+                  #ffffff;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background-color: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+    }
+
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 100%;
+      height: 100%;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(14, 165, 233, 0.1));
+      z-index: 0;
+    }
+
+    .hero-image-wrapper img {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image-wrapper:hover img {
+      transform: translateY(-4px);
+    }
+
+    /* Nút CTA tùy chỉnh */
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border: none;
+      font-weight: 600;
+      padding: 0.8rem 1.6rem;
+      border-radius: 0.65rem;
+      box-shadow: 0 4px 14px -2px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -2px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-outline-primary {
+      border: 1.5px solid var(--primary);
+      font-weight: 600;
+      padding: 0.8rem 1.6rem;
+      border-radius: 0.65rem;
+      color: var(--primary);
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #eff6ff;
+      color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -10px rgba(15, 23, 42, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .feature-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* About Section */
+    .about-section {
+      background-color: var(--bg-subtle);
+    }
+
+    /* CTA Section Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%);
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.35);
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Image Gallery / Showcase Cards */
+    .showcase-card {
+      overflow: hidden;
+      border-radius: 0.85rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+    }
+
+    .showcase-card img {
+      transition: transform 0.4s ease;
+    }
+
+    .showcase-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1. THANH ĐIỀU HƯỚNG (NAVBAR) ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <i class="bi bi-clouds-fill brand-logo fs-3 me-2"></i>
+        <span class="brand-logo fs-4">NovaTech</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-medium text-dark active" href="#home">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-medium text-muted" href="#about">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-medium text-muted" href="#features">Tính năng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 fw-medium text-muted" href="#showcase">Khám phá</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-sm px-3 py-2" href="#cta">
+              <i class="bi bi-rocket-takeoff me-1"></i> Bắt đầu ngay
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== 2. BANNER / HERO SECTION ==================== -->
+  <!-- 
+    Lưu ý Bootstrap 5: Jumbotron đã bị loại bỏ. 
+    Chúng tôi sử dụng Bootstrap 5 Container, Row, Col, Buttons, và Images để tạo Hero Section chuyên nghiệp.
+  -->
+  <section id="home" class="hero-section py-5 py-lg-6">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        
+        <!-- Cột Nội dung Tiêu đề & Giới thiệu Banner -->
+        <div class="col-12 col-lg-6 text-center text-lg-start">
+          <div class="hero-badge mb-3">
+            <i class="bi bi-stars me-1 text-warning"></i> Phiên bản mới 3.0 với Trí tuệ Nhân tạo
+          </div>
+          <h1 class="display-4 fw-bold lh-sm mb-3">
+            Đột phá Chuyển đổi Số cùng <span class="text-primary">NovaTech Cloud</span>
+          </h1>
+          <p class="lead text-muted mb-4 fs-5">
+            Giải pháp hạ tầng đám mây thế hệ mới kết hợp trí tuệ nhân tạo, giúp doanh nghiệp vận hành linh hoạt, bảo mật tuyệt đối và bứt phá doanh thu.
+          </p>
+
+          <!-- Nút Kêu gọi Hành động (CTA Buttons) -->
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
+            <a href="#cta" class="btn btn-primary btn-lg shadow-sm">
+              <i class="bi bi-lightning-charge-fill me-2"></i> Trải nghiệm miễn phí
+            </a>
+            <a href="#about" class="btn btn-outline-primary btn-lg">
+              <i class="bi bi-play-circle me-2"></i> Tìm hiểu thêm
+            </a>
+          </div>
+
+          <!-- Chỉ số thống kê nhanh -->
+          <div class="row g-3 pt-3 border-top border-light-subtle">
+            <div class="col-4">
+              <h4 class="fw-bold mb-0 text-dark">99.99%</h4>
+              <small class="text-muted">Uptime ổn định</small>
+            </div>
+            <div class="col-4">
+              <h4 class="fw-bold mb-0 text-dark">50,000+</h4>
+              <small class="text-muted">Doanh nghiệp tin dùng</small>
+            </div>
+            <div class="col-4">
+              <h4 class="fw-bold mb-0 text-dark">24/7</h4>
+              <small class="text-muted">Hỗ trợ kỹ thuật</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột Hình ảnh Banner nổi bật (Sử dụng Bootstrap img-fluid) -->
+        <div class="col-12 col-lg-6">
+          <div class="hero-image-wrapper text-center">
+            <img 
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
+              alt="Hạ tầng NovaTech Cloud và Bảng điều khiển phân tích số liệu" 
+              class="img-fluid rounded-4 shadow-lg border border-light-subtle"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. GIỚI THIỆU SẢN PHẨM / DỊCH VỤ ==================== -->
+  <!-- Hàng (row) chứa hình ảnh + đoạn mô tả sản phẩm/dịch vụ -->
+  <section id="about" class="about-section py-5">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        
+        <!-- Cột Hình ảnh Giới thiệu (Bootstrap img-fluid) -->
+        <div class="col-12 col-lg-6 order-2 order-lg-1">
+          <div class="position-relative">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" 
+              alt="Đội ngũ kỹ sư làm việc với giải pháp đám mây NovaTech" 
+              class="img-fluid rounded-4 shadow border"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+        <!-- Cột Nội dung Giới thiệu -->
+        <div class="col-12 col-lg-6 order-1 order-lg-2">
+          <span class="text-primary fw-bold text-uppercase small tracking-wide">Về chúng tôi</span>
+          <h2 class="display-6 fw-bold mt-2 mb-3">
+            Hạ Tầng Vững Chắc Cho Mọi Quy Mô Doanh Nghiệp
+          </h2>
+          <p class="text-muted mb-3">
+            NovaTech cung cấp giải pháp toàn diện từ lưu trữ đám mây, điện toán hiệu năng cao đến các công cụ tự động hóa quy trình nghiệp vụ. Chúng tôi đồng hành cùng các startup đổi mới sáng tạo và các tập đoàn lớn toàn cầu.
+          </p>
+          <p class="text-muted mb-4">
+            Với hệ thống máy chủ phủ sóng toàn cầu và cam kết độ trễ cực thấp, dữ liệu và ứng dụng của bạn luôn sẵn sàng phục vụ khách hàng mọi lúc, mọi nơi.
+          </p>
+
+          <!-- Danh sách điểm mạnh -->
+          <ul class="list-unstyled mb-4">
+            <li class="d-flex align-items-center mb-2">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-2"></i>
+              <span class="fw-medium">Triển khai siêu tốc chỉ trong 5 phút với Docker và Kubernetes</span>
+            </li>
+            <li class="d-flex align-items-center mb-2">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-2"></i>
+              <span class="fw-medium">Tự động sao lưu dữ liệu phân tán trên 3 trung tâm dữ liệu độc lập</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <i class="bi bi-check-circle-fill text-success fs-5 me-2"></i>
+              <span class="fw-medium">Tiết kiệm đến 40% chi phí vận hành so với giải pháp truyền thống</span>
+            </li>
+          </ul>
+
+          <a href="#features" class="btn btn-primary">
+            <i class="bi bi-arrow-right-circle me-1"></i> Khám phá tính năng
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. DANH SÁCH TÍNH NĂNG ==================== -->
+  <!-- Một row gồm 4 cột (Bootstrap Grid System), mỗi cột có icon + tiêu đề + mô tả -->
+  <section id="features" class="py-5">
+    <div class="container py-4">
+      
+      <!-- Tiêu đề phần Tính năng -->
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="text-primary fw-bold text-uppercase small tracking-wide">Tính năng vượt trội</span>
+        <h2 class="display-6 fw-bold mt-2 mb-3">Tất Cả Công Cụ Bạn Cần Để Bứt Phá</h2>
+        <p class="text-muted fs-5">
+          Tối ưu hóa hiệu suất, nâng cao tính bảo mật và mở rộng quy mô dễ dàng với bộ tính năng tiên tiến.
+        </p>
+      </div>
+
+      <!-- Lưới 4 cột tính năng (Grid System: col-12 col-md-6 col-lg-3) -->
+      <div class="row g-4">
+        
+        <!-- Tính năng 1 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card text-center text-sm-start">
+            <div class="feature-icon-box bg-primary-subtle text-primary">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Tốc Độ Vượt Trội</h5>
+            <p class="text-muted small mb-0">
+              Công nghệ lưu trữ NVMe thế hệ mới kết hợp CDN toàn cầu mang lại tốc độ truy vấn mili-giây.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tính năng 2 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card text-center text-sm-start">
+            <div class="feature-icon-box bg-success-subtle text-success">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Bảo Mật Đa Tầng</h5>
+            <p class="text-muted small mb-0">
+              Mã hóa dữ liệu chuẩn AES-256 đầu cuối, tường lửa WAF và ngăn chặn tấn công DDoS thông minh.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tính năng 3 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card text-center text-sm-start">
+            <div class="feature-icon-box bg-info-subtle text-info">
+              <i class="bi bi-cpu"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Tích Hợp AI Trí Tuệ</h5>
+            <p class="text-muted small mb-0">
+              Trợ lý AI phân tích tải thông minh, tự động dự báo tài nguyên và cảnh báo nguy cơ trước 24 giờ.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tính năng 4 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card text-center text-sm-start">
+            <div class="feature-icon-box bg-warning-subtle text-warning">
+              <i class="bi bi-headset"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Hỗ Trợ 24/7/365</h5>
+            <p class="text-muted small mb-0">
+              Đội ngũ chuyên gia kỹ sư chứng chỉ quốc tế sẵn sàng phản hồi trong vòng 5 phút qua Live Chat và Hotline.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. BỘ SƯU TẬP HÌNH ẢNH / KHÁM PHÁ (BOOTSTRAP IMAGES) ==================== -->
+  <section id="showcase" class="py-5 bg-light">
+    <div class="container py-3">
+      <div class="text-center mb-5">
+        <span class="text-primary fw-bold text-uppercase small">Bộ sưu tập hình ảnh</span>
+        <h2 class="h3 fw-bold mt-2">Trải Nghiệm Trực Quan Trên Mọi Thiết Bị</h2>
+        <p class="text-muted">Áp dụng lớp img-fluid giúp hình ảnh thích ứng mượt mà trên desktop, tablet và mobile.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Ảnh 1 -->
+        <div class="col-12 col-md-4">
+          <div class="showcase-card shadow-sm border bg-white p-2">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
+              alt="Báo cáo phân tích và thống kê tài nguyên đám mây" 
+              class="img-fluid rounded"
+              loading="lazy"
+            >
+            <div class="p-3">
+              <h6 class="fw-bold mb-1">Báo Cáo Thời Gian Thực</h6>
+              <p class="text-muted small mb-0">Theo dõi lưu lượng mạng và số liệu kinh doanh chính xác.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ảnh 2 -->
+        <div class="col-12 col-md-4">
+          <div class="showcase-card shadow-sm border bg-white p-2">
+            <img 
+              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" 
+              alt="Môi trường làm việc số và kết nối toàn cầu" 
+              class="img-fluid rounded"
+              loading="lazy"
+            >
+            <div class="p-3">
+              <h6 class="fw-bold mb-1">Hợp Tác Nhóm Liền Mạch</h6>
+              <p class="text-muted small mb-0">Làm việc mọi lúc mọi nơi với cơ chế đồng bộ tức thì.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ảnh 3 -->
+        <div class="col-12 col-md-4">
+          <div class="showcase-card shadow-sm border bg-white p-2">
+            <img 
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" 
+              alt="Trung tâm dữ liệu máy chủ hiện đại" 
+              class="img-fluid rounded"
+              loading="lazy"
+            >
+            <div class="p-3">
+              <h6 class="fw-bold mb-1">Hạ Tầng Data Center Chuẩn Tier III</h6>
+              <p class="text-muted small mb-0">Bảo đảm tính sẵn sàng và ổn định ở mức cao nhất.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. NÚT KÊU GỌI HÀNH ĐỘNG (CTA SECTION) ==================== -->
+  <!-- Một banner nổi bật với nút CTA "Đăng ký ngay", "Xem thêm" theo yêu cầu -->
+  <section id="cta" class="py-5">
+    <div class="container py-4">
+      <div class="cta-banner p-4 p-md-5 text-center text-white">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-8">
+            <h2 class="display-6 fw-bold mb-3">
+              Sẵn Sàng Nâng Tầm Doanh Nghiệp Của Bạn?
+            </h2>
+            <p class="lead opacity-90 mb-4 fs-5">
+              Đăng ký ngay hôm nay để nhận 14 ngày dùng thử miễn phí không giới hạn tính năng. Không yêu cầu thẻ tín dụng!
+            </p>
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+              <button class="btn btn-light btn-lg text-primary fw-bold px-4 py-3 shadow" data-bs-toggle="modal" data-bs-target="#registerModal">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Đăng Ký Ngay
+              </button>
+              <a href="#about" class="btn btn-outline-light btn-lg fw-semibold px-4 py-3">
+                <i class="bi bi-info-circle me-2"></i> Xem Thêm Chi Tiết
+              </a>
+            </div>
+            <small class="d-block mt-3 opacity-75">
+              <i class="bi bi-shield-lock-fill me-1"></i> Cam kết bảo mật thông tin & Hỗ trợ kỹ thuật 24/7
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. CHÂN TRANG (FOOTER) ==================== -->
+  <footer class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-start">
+          <h5 class="text-white fw-bold d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+            <i class="bi bi-clouds-fill text-primary me-2 fs-4"></i> NovaTech Cloud
+          </h5>
+          <p class="small mb-0 text-secondary">
+            Bài thực hành: <strong>Tạo Landing Page với Bootstrap và Hình Ảnh</strong>.
+          </p>
+          <p class="small mb-0 text-secondary">
+            Sử dụng <strong>Bootstrap 5.3 Containers, Grid System, Buttons và Images (img-fluid)</strong>.
+          </p>
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <div class="mb-2">
+            <a href="#" class="text-secondary text-decoration-none me-3"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-secondary text-decoration-none me-3"><i class="bi bi-twitter-x fs-5"></i></a>
+            <a href="#" class="text-secondary text-decoration-none me-3"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#" class="text-secondary text-decoration-none"><i class="bi bi-github fs-5"></i></a>
+          </div>
+          <small class="text-secondary">&copy; 2026 NovaTech. All rights reserved.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL ĐĂNG KÝ TRẢI NGHIỆM ==================== -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-dark" id="registerModalLabel">
+            <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i> Đăng Ký Trải Nghiệm Miễn Phí
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-3">
+          <p class="text-muted small mb-3">Nhập email doanh nghiệp của bạn để nhận tài khoản kích hoạt và 100$ credit dùng thử.</p>
+          <form id="quickRegisterForm" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Thông tin đăng ký đã được gửi thành công.'); bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();">
+            <div class="mb-3">
+              <label for="trialName" class="form-label small fw-semibold">Họ và tên</label>
+              <input type="text" class="form-control" id="trialName" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="mb-3">
+              <label for="trialEmail" class="form-label small fw-semibold">Email công việc</label>
+              <input type="email" class="form-control" id="trialEmail" placeholder="name@company.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+              <i class="bi bi-send-check me-1"></i> Bắt Đầu 14 Ngày Dùng Thử
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
